@@ -100,6 +100,9 @@
 		<input type="text" placeholder="Имя" id="user_name">
 		<input type="text" placeholder="Email" id="user_email">
 		<input type="text" placeholder="Телефон" id="user_phone">
+
+		<div id="error"></div>
+
 		<button id="order">Оформить</button>
 
 	</form>
@@ -109,6 +112,8 @@
 		let buy = document.getElementById("buy");
 		let order = document.getElementById("order");
 
+		tg.expand();
+
 		buy.addEventListener("click", () => {
 			document.getElementById("main").style.display = "none";
 			document.getElementById("form").style.display = "block";
@@ -116,6 +121,26 @@
 		});
 
 		order.addEventListener("click", () => {
+
+			document.getElementById("error").innerText = '';
+
+			let user_name = document.getElementById("user_name").value;
+			let user_email = document.getElementById("user_email").value;
+			let user_phone = document.getElementById("user_phone").value;
+
+			if(user_name.length < 5) {
+				document.getElementById("error").innerText = 'Ошибка в имени';
+				return;
+			}
+
+			let data = {
+				user_name: user_name,
+				user_email: user_email,
+				user_phone: user_phone
+			}
+
+			tg.sendData(JSON.stringify(data));
+
 			tg.close();
 		});
 	</script>
