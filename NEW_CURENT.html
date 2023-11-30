@@ -89,11 +89,12 @@
 	</style>
 </head>
 <body>
-	<div>
+
 		<form id="form">
 			<h1>Введите курс валют</h1>
 			<img src="https://zyatnin.github.io/ALI_TRADE_WebApp_NEW/Ali_TRADE_logo.png">
-
+			<button id="order">Сохранить НОВЫЙ курс</button>
+			<h3>&nbsp;</h3>
 			<table align="center">
 				<tbody>
 					<tr>
@@ -122,38 +123,19 @@
 							<input type="number" placeholder="$ Доллар" id="new_dollar">
 						</td>
 					</tr>
-					<tr>
-						<td></td>
-						<td>&nbsp;</td>
-					</tr>
-					<tr>
-						<td></td>
-						<td>&nbsp;</td>
-					</tr>
-					<tr>
-						<td></td>
-						<td><button id="order">Сохранить НОВЫЙ курс</button></td>
-					</tr>
 				</tbody>
 			</table>
 
 			<div id="error"></div>
 
 		</form>
-	</div>
+
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 	<script>
 		let tg = window.Telegram.WebApp;
-		let buy = document.getElementById("buy");
 		let order = document.getElementById("order");
 
 		tg.expand();
-
-		buy.addEventListener("click", () => {
-			document.getElementById("main").style.display = "none";
-			document.getElementById("form").style.display = "block";
-			document.getElementById("user_name").value = tg.initDataUnsafe.user.first_name + " " + tg.initDataUnsafe.user.last_name;
-		});
 
 		order.addEventListener("click", () => {
 
@@ -162,11 +144,6 @@
 			let new_data = document.getElementById("new_data").value;
 			let new_yuan = document.getElementById("new_yuan").value;
 			let new_dollar = document.getElementById("new_dollar").value;
-
-			if(user_name.length < 5) {
-				document.getElementById("error").innerText = 'Ошибка в имени';
-				return;
-			}
 
 			let data = {
 				new_data: new_data,
