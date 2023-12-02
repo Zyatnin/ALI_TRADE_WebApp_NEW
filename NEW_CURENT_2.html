@@ -230,6 +230,14 @@
         font-size: 14px
     }
 
+    .form-inner button {
+        margin-top: 30px;
+        background: #f69a73;
+        border-bottom: 4px solid #d87d56;
+        color: white;
+        font-size: 14px
+    }
+
     .form-inner textarea {
         resize: none
     }
@@ -302,11 +310,11 @@
                 <input type=number step="0.01" placeholder="¥ Юань" id="new_yuan" value=12.99>
                 <input type=number step="0.01" placeholder="$ Доллар" id="new_dollar" value=93.99>
 
-                <input type=submit id="order" value=Сохранить>
+                <input type=submit id="order" value=Сохранить onclick="return tg_event();">
 
-                <!--
+
                 <button id="order">Сохранить НОВЫЙ курс</button>
-				-->
+
 
             </div>
         </form>
@@ -323,8 +331,6 @@
 
 		order.addEventListener("click", () => {
 
-			document.getElementById("error").innerText = '';
-
 			let new_data = document.getElementById("new_data").value;
 			let new_yuan = document.getElementById("new_yuan").value;
 			let new_dollar = document.getElementById("new_dollar").value;
@@ -338,7 +344,28 @@
 			tg.sendData(JSON.stringify(data));
 
 			tg.close();
-		});
+		}
+
+		function tg_event() {
+
+		   	let new_data = document.getElementById("new_data").value;
+			let new_yuan = document.getElementById("new_yuan").value;
+			let new_dollar = document.getElementById("new_dollar").value;
+
+			let data = {
+				new_data: new_data,
+				new_yuan: new_yuan,
+				new_dollar: new_dollar
+			}
+
+			tg.sendData(JSON.stringify(data));
+
+			tg.close();
+
+		   return true;
+		}
+
+		);
 	</script>
 
     <div id=loom-companion-mv3 ext-id=liecbddmkiiihnedobmlmillhodjkdmb>
