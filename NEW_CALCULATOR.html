@@ -124,6 +124,8 @@
 				<br/>
 				<input type="number" step="1" value=1 placeholder="Количество коробок, шт" id="new_quantity">Количество коробок, шт<br/>
 				<br/>
+				<input type="number" step="1" value=1000 placeholder="Сумма страховки, $" id="new_sum">Сумма страховки, $<br/>
+				<br/>
 
 			</div>
 
@@ -160,6 +162,7 @@
 			let new_depth = document.getElementById("new_depth").value;
 			let new_weight = document.getElementById("new_weight").value;
 			let new_quantity = document.getElementById("new_quantity").value;
+			let new_sum = document.getElementById("new_sum").value;
 
 			let data = {
 				type_buttom: "CALCULATOR",
@@ -171,6 +174,8 @@
 				new_width: new_width,
 				new_height: new_height,
 				new_depth: new_depth,
+
+				new_sum: new_sum,
 
 				new_weight: new_weight,
 				new_quantity: new_quantity
