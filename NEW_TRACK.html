@@ -94,6 +94,13 @@
 		    font-size: 24px;
 		}
 
+		input[type="text" i] {
+		    /* padding-block: 1px; */
+		    padding-inline: 2px;
+		    margin: 5px 15px 0px 15px;
+		    font-size: 24px;
+		}
+
 		input: focus {
 			border-color: #db5d5d;
 		}
@@ -118,12 +125,13 @@
 
 		<form id="form">
 			<img src="https://zyatnin.github.io/ALI_TRADE_WebApp_NEW/Ali_TRADE_logo.png">
-			<button id="order">Сохранить НОВЫЙ курс</button>
+			<button id="order">Проверить ТРЕК номер</button>
 			<h3>&nbsp;</h3>
-			<input type="date" placeholder="Дата" id="new_data">Дата курса<br/>
-			<input type="number" step="0.01" value=12.97 placeholder="¥ Юань" id="new_yuan">КУРС ЮАНЯ<br/>
-			<input type="number" step="0.01" value=93.97 placeholder="$ Доллар" id="new_dollar">КУРС ДОЛЛАРА<br/>
-
+			<input type="text" placeholder="G56-0918-5" id="new_track">ТРЕК номер<br/>
+            <div>
+              <br/><br/><br/>
+                Введите ваш трек номер и нажмите кнопку "Проверить ТРЕК номер"
+            </div>
 			<div id="error"></div>
 
 		</form>
@@ -140,16 +148,12 @@
 
 			document.getElementById("error").innerText = '';
 
-			let new_data = document.getElementById("new_data").value;
-			let new_yuan = document.getElementById("new_yuan").value;
-			let new_dollar = document.getElementById("new_dollar").value;
+			let new_track = document.getElementById("new_track").value;
 
 			let data = {
-				type_buttom: "CURENT",
+				type_buttom: "TRACK",
 
-				new_data: new_data,
-				new_yuan: new_yuan,
-				new_dollar: new_dollar
+				new_track: new_track
 			}
 
 			tg.sendData(JSON.stringify(data));
