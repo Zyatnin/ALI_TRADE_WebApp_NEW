@@ -129,7 +129,7 @@
 			-->
 			<div>
 				<img src="https://zyatnin.github.io/ALI_TRADE_WebApp_NEW/triumph_logo.png">
-				<button id="order">Создать ааявку</button>
+				<button id="order">Создать заявку</button>
 			</div>
 			<!--
 			<h3>&nbsp;</h3>
@@ -137,6 +137,10 @@
 			<br/>
 
 			<div>
+
+				<input type=date   placeholder="Дата погрузки" id="new_data">Дата погрузки
+				<br/>
+				<br/>
 				<input
 						type="radio"
 						id="type_Choice1"
@@ -150,6 +154,7 @@
 
 				<input type="radio" id="type_Choice3" name="type_Choice" value="Another2" />
 				<label for="type_Choice2">ТЦ 3</label>
+
 					<!--
 					<input type="radio" id="type_Choice3" name="type_Choice" value="mail" />
 					<label for="type_Choice3">Mail</label>
@@ -157,16 +162,29 @@
 
 
 				<br/><br/>
-				<input type="string" step="1" value=40 placeholder="Ширина, см" id="new_width">Адрес выгрузки<br/>
+				<input type="string" step="1" value="Москва, Гагарина 30" placeholder="Ширина, см" id="new_width">Адрес выгрузки<br/>
 				<br/>
 				<input type="number" step="1" value=40 placeholder="Ширина, см" id="new_width">Вес груза, кг<br/>
-				<input type="number" step="1" value=50 placeholder="Высота, см" id="new_height">Высота, см<br/>
-				<input type="number" step="1" value=30 placeholder="Глубина, см" id="new_depth">Глубина, см<br/>
+				<input type="number" step="1" value=4 placeholder="Высота, см" id="new_height">Подъём, этаж<br/>
+				<input type="number" step="1" value=2 placeholder="Глубина, см" id="new_depth">Грузчики, человек<br/>
+
 				<br/>
-				<input type="number" step="1" value=35 placeholder="Вес, кг" id="new_weight">Вес, кг<br/>
-				<input type="number" step="1" value=1 placeholder="Количество коробок, шт" id="new_quantity">Количество коробок, шт<br/>
-				<input type="number" step="1" value=1000 placeholder="Сумма страховки, $" id="new_sum">Сумма страховки, $<br/>
-	
+				<input
+						type="radio"
+						id="type_Choice1"
+						name="type_Choice"
+						value="Cloth"
+						checked />
+				<label for="type_Choice1">Средний (до 700кг)</label>
+
+				<input type="radio" id="type_Choice2" name="type_Choice" value="Another" />
+				<label for="type_Choice2">Большой (до 1400кг)</label>
+
+				<input type="radio" id="type_Choice3" name="type_Choice" value="Another2" />
+				<label for="type_Choice2">Негабарит (до 1900кг)</label>
+				<br/><br/>
+				<input type="string" step="1" value="+7 (900) 259 17 00" placeholder="Ширина, см" id="new_width">Контакт<br/>
+				<input type="string" step="1" value="Хрупкое" placeholder="Ширина, см" id="new_width">Комментарий<br/>
 
 
 			</div>
