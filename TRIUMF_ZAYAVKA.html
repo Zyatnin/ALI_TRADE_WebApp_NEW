@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+
+	<meta name="viewport"
+			content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Shop</title>
+	<style>
+
+		@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;500&display=swap');
+
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: 'Montserrat', sans-serif;
+			font-weight: 200;
+			color: var(--tg-theme-text-color);
+			background: var(--tg-theme-bg-color);
+		}
+
+		#main {
+			width: 100%;
+			padding: 20px;
+			text-align: center;
+		}
+
+		h1 {
+			margin: 5px 0px 5px 0px;
+		}
+
+		img {
+			width: 70px;
+			/* margin: 40px auto; */
+			float: left;
+		}
+
+		p {
+			width: 350px;
+			margin: 0 auto;
+		}
+
+		button {
+			border: 0;
+			border-radius: 10px;
+			/* margin-top: 50px; */
+			margin: 5px 30px 5px 30px;
+			height: 60px;
+			width: 200px;
+			font-size: 20px;
+			font-weight: 500;
+			cursor: pointer;
+			transition: all 500ms ease;
+			/* border-color: #db5d5d; */
+			border: 2px solid;
+			color: var(--tg-theme-button-color);
+			background: var(--tg-theme-button-text-color);
+		}
+
+		button:hover {
+			background: var(--tg-theme-secondary-bg-color);
+		}
+
+		#form {
+			text-alighn: center;
+		}
+
+		input {
+			width: 30%;
+			/* outline: none; */
+			/* margin: 10px 5%; */
+			/* padding: 150px 100px; */
+			/* font-size: 14px; */
+			border: 2px solid silver;
+			border-radius: 10px;
+		}
+
+		input[type="number" i] {
+		    /* padding-block: 1px; */
+		    padding-inline: 2px;
+		    margin: 5px 15px 0px 15px;
+		    font-size: 24px;
+		}
+
+		input[type="string" i] {
+		    /* padding-block: 1px; */
+		    padding-inline: 2px;
+		    margin: 5px 15px 0px 15px;
+		    font-size: 24px;
+		}
+
+		input[type="date" i] {
+		    /* padding-block: 1px; */
+		    padding-inline: 2px;
+		    margin: 5px 15px 0px 15px;
+		    font-size: 24px;
+		}
+
+		input: focus {
+			border-color: #db5d5d;
+		}
+
+		input[type="radio" i] {
+		    padding-block: 1px;
+		    padding-inline: 2px;
+		    margin: 10px 5%;
+		    font-size: 14px;
+		    width: 13px;
+		    margin: 0px 15px 0px 15px;
+		}
+
+		div {
+		    clear: left;
+			display: block;
+		}
+
+	</style>
+</head>
+<body>
+
+		<form id="form">
+			<!--
+			<h1>Введите параметры груза</h1>
+			-->
+			<div>
+				<img src="https://zyatnin.github.io/ALI_TRADE_WebApp_NEW/triumph_logo.png">
+				<button id="order">Создать ааявку</button>
+			</div>
+			<!--
+			<h3>&nbsp;</h3>
+			-->
+			<br/>
+
+			<div>
+				<input
+						type="radio"
+						id="type_Choice1"
+						name="type_Choice"
+						value="Cloth"
+						checked />
+				<label for="type_Choice1">ТЦ 1</label>
+
+				<input type="radio" id="type_Choice2" name="type_Choice" value="Another" />
+				<label for="type_Choice2">ТЦ 2</label>
+
+				<input type="radio" id="type_Choice3" name="type_Choice" value="Another2" />
+				<label for="type_Choice2">ТЦ 3</label>
+					<!--
+					<input type="radio" id="type_Choice3" name="type_Choice" value="mail" />
+					<label for="type_Choice3">Mail</label>
+					-->
+
+
+				<br/><br/>
+				<input type="string" step="1" value=40 placeholder="Ширина, см" id="new_width">Адрес выгрузки<br/>
+				<br/>
+				<input type="number" step="1" value=40 placeholder="Ширина, см" id="new_width">Вес груза, кг<br/>
+				<input type="number" step="1" value=50 placeholder="Высота, см" id="new_height">Высота, см<br/>
+				<input type="number" step="1" value=30 placeholder="Глубина, см" id="new_depth">Глубина, см<br/>
+				<br/>
+				<input type="number" step="1" value=35 placeholder="Вес, кг" id="new_weight">Вес, кг<br/>
+				<input type="number" step="1" value=1 placeholder="Количество коробок, шт" id="new_quantity">Количество коробок, шт<br/>
+				<input type="number" step="1" value=1000 placeholder="Сумма страховки, $" id="new_sum">Сумма страховки, $<br/>
+	
+
+
+			</div>
+
+			<div id="error"></div>
+
+		</form>
+
+
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+	<script>
+		let tg = window.Telegram.WebApp;
+		let order = document.getElementById("order");
+
+		tg.expand();
+
+		order.addEventListener("click", () => {
+
+			document.getElementById("error").innerText = '';
+
+			_form = document.getElementById("form");
+
+			let type_Choice = _form.type_Choice.value;
+
+			let type_Choice1 = document.getElementById("type_Choice1").value;
+			let type_Choice2 = document.getElementById("type_Choice2").value;
+
+			let new_width = document.getElementById("new_width").value;
+			let new_height = document.getElementById("new_height").value;
+			let new_depth = document.getElementById("new_depth").value;
+			let new_weight = document.getElementById("new_weight").value;
+			let new_quantity = document.getElementById("new_quantity").value;
+			let new_sum = document.getElementById("new_sum").value;
+
+			let data = {
+				type_buttom: "CALCULATOR",
+
+				type_Choice: type_Choice,
+				type_Choice1: type_Choice1,
+				type_Choice2: type_Choice2,
+
+				new_width: new_width,
+				new_height: new_height,
+				new_depth: new_depth,
+
+				new_sum: new_sum,
+
+				new_weight: new_weight,
+				new_quantity: new_quantity
+			}
+
+			tg.sendData(JSON.stringify(data));
+
+			tg.close();
+		});
+	</script>
+</body>
+</html>
