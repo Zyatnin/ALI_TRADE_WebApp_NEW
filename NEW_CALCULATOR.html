@@ -122,7 +122,7 @@
 			-->
 			<div>
 				<img src="https://zyatnin.github.io/ALI_TRADE_WebApp_NEW/Ali_TRADE_logo.png">
-				<button id="order">Рассчитать стоимость доставки</button>
+				<button id="order">Рассчитать</button>
 			</div>
 			<!--
 			<h3>&nbsp;</h3>
@@ -130,6 +130,7 @@
 			<br/>
 
 			<div>
+				<!--
 				<input
 						type="radio"
 						id="type_Choice1"
@@ -140,7 +141,7 @@
 
 				<input type="radio" id="type_Choice2" name="type_Choice" value="Another" />
 				<label for="type_Choice2">Хозтовары</label>
-
+				-->
 					<!--
 					<input type="radio" id="type_Choice3" name="type_Choice" value="mail" />
 					<label for="type_Choice3">Mail</label>
@@ -155,8 +156,9 @@
 				<br/>
 				<input type="number" step="1" value=35 placeholder="Вес, кг" id="new_weight">Вес, кг<br/>
 				<input type="number" step="1" value=1 placeholder="Количество коробок, шт" id="new_quantity">Количество коробок, шт<br/>
+				<!--
 				<input type="number" step="1" value=1000 placeholder="Сумма страховки, $" id="new_sum">Сумма страховки, $<br/>
-	
+				-->
 
 
 			</div>
@@ -179,30 +181,19 @@
 
 			_form = document.getElementById("form");
 
-			let type_Choice = _form.type_Choice.value;
-
-			let type_Choice1 = document.getElementById("type_Choice1").value;
-			let type_Choice2 = document.getElementById("type_Choice2").value;
 
 			let new_width = document.getElementById("new_width").value;
 			let new_height = document.getElementById("new_height").value;
 			let new_depth = document.getElementById("new_depth").value;
 			let new_weight = document.getElementById("new_weight").value;
 			let new_quantity = document.getElementById("new_quantity").value;
-			let new_sum = document.getElementById("new_sum").value;
 
 			let data = {
 				type_buttom: "CALCULATOR",
 
-				type_Choice: type_Choice,
-				type_Choice1: type_Choice1,
-				type_Choice2: type_Choice2,
-
 				new_width: new_width,
 				new_height: new_height,
 				new_depth: new_depth,
-
-				new_sum: new_sum,
 
 				new_weight: new_weight,
 				new_quantity: new_quantity
